@@ -2,7 +2,7 @@
 #define RASTER_H
 
 #include "globals.h"
-
+#include "consts.h"
 
 void clear_screen(UINT8 screen);
 
