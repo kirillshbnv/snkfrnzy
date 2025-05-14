@@ -273,3 +273,11 @@ void plot_bitmap_16x16(UINT8 screen, int x, int y, UINT16 bitmap_16x16) {
 /***********************/
 /* LOW-LEVEL FUNCTIONS */
 /***********************/
+
+int get_byte_offset(int x) {
+
+}
+
+int get_bit_offset(int x) {
+
+}
