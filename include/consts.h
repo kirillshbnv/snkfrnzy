@@ -1,0 +1,23 @@
+#ifndef CONSTS_H
+#define CONSTS_H
+
+#define SCREEN_WIDTH 640
+#define SCREEN_HEIGHT 400
+
+#define BORDER_SEG_WIDTH 16
+#define BORDER_SEG_HEIGHT 16
+
+#define SNAKE_HEAD_WIDTH 16
+#define SNAKE_HEAD_HEIGHT 16
+
+#define SNAKE_BODY_WIDTH 16
+#define SNAKE_BODY_HEIGHT 16
+
+#define BUG_WIDTH 8
+#define BUG_HEIGHT 8
+
+#define SPIKE_WIDTH 16
+#define SPIKE_HEIGHT 16
+
+
+#endif /* CONSTS_H */
