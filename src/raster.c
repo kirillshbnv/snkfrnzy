@@ -230,7 +230,7 @@ void plot_vert_line(UINT8 screen, int x, int y1, int y2) {
 }
 
 void plot_horiz_line(UINT8 screen, int x1, int x2, int y) {
-    
+
 }
 
 void plot_border(UINT8 screen) {
@@ -275,9 +275,13 @@ void plot_bitmap_16x16(UINT8 screen, int x, int y, UINT16 bitmap_16x16) {
 /***********************/
 
 int get_byte_offset(int x) {
-
+    return x >> 3;
 }
 
 int get_bit_offset(int x) {
+    return 7 - (x & 7);
+}
 
+int get_row_offset(int y) {
+    return y * 80;
 }
