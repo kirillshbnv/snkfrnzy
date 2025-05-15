@@ -1,4 +1,5 @@
 #include "../include/raster.h"
+#include <string.h>
 
 /***************/
 /* BITMAP DATA */
@@ -218,19 +219,31 @@ void plot_bitmap_16x16(UINT8 *screen, int x, int y, UINT16 bitmap_16x16);
 /************************/
 
 void clear_screen(UINT8 *screen) {
-
+    memset(screen, 0x00, TOTAL_BYTES);
 }
 
 void plot_pixel(UINT8 *screen, int x, int y) {
-
+    if (x_in_screen(x) && y_in_screen(y)) {
+        screen[get_byte_offset(x) + get_row_offset(y)] |= (1 << get_bit_offset(x));
+    }
 }
 
 void plot_vert_line(UINT8 *screen, int x, int y1, int y2) {
-
+    if (x_in_screen(x) && y_in_screen(y1)) {
+        for (y1; y1 <= y2; y1++) {
+            if (!y_in_screen(y1)) { return ;}
+            plot_pixel(screen, x, y1);
+        }
+    }
 }
 
 void plot_horiz_line(UINT8 *screen, int x1, int x2, int y) {
-
+    if (x_in_screen(x1) && y_in_screen(y)) {
+        for (x1; x1 <= x2; x1++) {
+            if (x_in_screen(x1)) { return; }
+            plot_pixel(screen, x1, y);
+        }
+    }
 }
 
 void plot_border(UINT8 *screen) {
@@ -284,4 +297,12 @@ int get_bit_offset(int x) {
 
 int get_row_offset(int y) {
     return y * 80;
+}
+
+UINT8 x_in_screen(int x) {
+    return (x >= 0 && x <= MAX_SCREEN_X);
+}
+
+UINT8 y_in_screen(int y) {
+    return (y >= 0 && y <= MAX_SCREEN_Y);
 }
